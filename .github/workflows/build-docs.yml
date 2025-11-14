@@ -29,10 +29,10 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Build documentation
-        run: npx @algorandfoundation/algo-docs-sync build
+        run: npx algo-docs build
 
       - name: Generate manifest
-        run: npx @algorandfoundation/algo-docs-sync manifest
+        run: npx algo-docs manifest
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
