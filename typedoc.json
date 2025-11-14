@@ -1,10 +1,19 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["src/index.ts", "src/types/*.ts"],
-  "exclude": ["src/**/*.spec.ts", "tests/**/*.*", "examples/**/*.*"],
+  "entryPoints": [
+    "src/index.ts",
+    "src/types/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "tests/**/*.*",
+    "examples/**/*.*"
+  ],
   "entryPointStrategy": "expand",
-  "out": "docs/code",
-  "plugin": ["typedoc-plugin-markdown"],
+  "out": ".docs/api",
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
   "theme": "default",
   "cleanOutputDir": true,
   "githubPages": false,

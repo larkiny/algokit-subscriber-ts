@@ -3,11 +3,9 @@
   "version": "1.0",
   "guides": {
     "sourcePath": "docs/",
-    "include": "**/*.md",
-    "exclude": ["**/README.md", "**/CONTRIBUTING.md"]
+    "include": "**/*.md"
   },
   "api": {
-    "include": "_refs/**/*.md",
-    "exclude": ["**/README.md", "**/CONTRIBUTING.md"]
+    "include": "**/*.md"
   }
 }
