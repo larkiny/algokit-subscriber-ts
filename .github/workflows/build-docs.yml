@@ -28,6 +28,16 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
+      - name: Prepare publish workspace
+        run: |
+          rm -rf docs-publish
+          if git ls-remote --exit-code origin "${DOCS_BRANCH}" > /dev/null 2>&1; then
+            git clone --depth 1 --branch "${DOCS_BRANCH}" "https://github.com/${GITHUB_REPOSITORY}.git" docs-publish
+            rm -rf docs-publish/.git
+          else
+            mkdir docs-publish
+          fi
+
       - name: Build documentation
         run: npx algo-docs build
 
@@ -49,16 +59,27 @@ jobs:
               exit 1
             fi
             target="v${{ github.event.release.tag_name }}"
+            update_latest="true"
           else
             target="latest"
+            update_latest="false"
           fi
           echo "target=$target" >> "$GITHUB_OUTPUT"
+          echo "update_latest=$update_latest" >> "$GITHUB_OUTPUT"
 
       - name: Stage docs for publish
         run: |
-          rm -rf docs-publish
-          mkdir -p "docs-publish/${{ steps.docs_target.outputs.target }}"
-          cp -R "${DOCS_OUTPUT}/." "docs-publish/${{ steps.docs_target.outputs.target }}/"
+          target="${{ steps.docs_target.outputs.target }}"
+          folders=("$target")
+          if [[ "${{ steps.docs_target.outputs.update_latest }}" == "true" && "$target" != "latest" ]]; then
+            folders+=("latest")
+          fi
+
+          for folder in "${folders[@]}"; do
+            rm -rf "docs-publish/${folder}"
+            mkdir -p "docs-publish/${folder}"
+            cp -R "${DOCS_OUTPUT}/." "docs-publish/${folder}/"
+          done
 
       - name: Publish docs branch
         uses: peaceiris/actions-gh-pages@v4
