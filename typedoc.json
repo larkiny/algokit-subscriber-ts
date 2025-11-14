@@ -10,7 +10,7 @@
     "examples/**/*.*"
   ],
   "entryPointStrategy": "expand",
-  "out": ".docs/api",
+  "out": "docs-build/api",
   "plugin": [
     "typedoc-plugin-markdown"
   ],
