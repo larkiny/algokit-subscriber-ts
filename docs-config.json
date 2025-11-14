@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/@algorandfoundation/algo-docs-sync/schema/v1.json",
+  "version": "1.0",
+  "guides": {
+    "sourcePath": "docs/",
+    "include": "**/*.md",
+    "exclude": ["**/README.md", "**/CONTRIBUTING.md"]
+  },
+  "api": {
+    "include": "_refs/**/*.md",
+    "exclude": ["**/README.md", "**/CONTRIBUTING.md"]
+  }
+}
