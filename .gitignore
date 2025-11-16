@@ -52,8 +52,8 @@ coverage
 # Website & Code docs generation
 code-docs/
 out/
-dist-docs/
-.docs/
+docs-build/
+docs-publish/
 
 # dotenv environment variable files
 .env

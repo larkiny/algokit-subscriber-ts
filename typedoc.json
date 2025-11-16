@@ -1,24 +1,21 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": [
-    "src/index.ts",
-    "src/types/*.ts"
-  ],
-  "exclude": [
-    "src/**/*.spec.ts",
-    "tests/**/*.*",
-    "examples/**/*.*"
-  ],
+  "entryPoints": ["src/index.ts", "src/types/*.ts"],
+  "exclude": ["src/**/*.spec.ts", "tests/**/*.*", "examples/**/*.*"],
   "entryPointStrategy": "expand",
   "out": "docs-build/api",
-  "plugin": [
-    "typedoc-plugin-markdown"
-  ],
+  "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-frontmatter", "./custom-frontmatter.mjs"],
   "theme": "default",
   "cleanOutputDir": true,
+  "hideBreadcrumbs": true,
   "githubPages": false,
   "readme": "none",
-  "entryDocument": "README.md",
   "gitRevision": "main",
-  "tsconfig": "tsconfig.build.json"
+  "tsconfig": "tsconfig.build.json",
+  "readmeFrontmatter": {
+    "title": "Overview",
+    "sidebar": {
+      "order": 0
+    }
+  }
 }
