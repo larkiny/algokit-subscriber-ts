@@ -23,6 +23,9 @@ export function load(app) {
         ReflectionKind.Interface,
         ReflectionKind.Module,
         ReflectionKind.Enum,
+        ReflectionKind.TypeAlias,
+        ReflectionKind.ClassMember,
+        ReflectionKind.SomeMember,
       ]
       if (frontmatterKinds.includes(page.model?.kind)) {
         page.frontmatter = {
