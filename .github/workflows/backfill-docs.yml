@@ -62,7 +62,7 @@ jobs:
             fi
             git checkout --force "$tag"
             npm ci --ignore-scripts --legacy-peer-deps
-            PEER_DEPS=$(node -e "const peers=require('./package.json').peerDependencies||{};console.log(Object.entries(peers).map(([n,v])=>\`${n}@${v}\`).join(' '))")
+            PEER_DEPS=$(node -e "const peers=require('./package.json').peerDependencies||{};console.log(Object.entries(peers).map(([name,range]) => name + '@' + range).join(' '))")
             if [ -n "$PEER_DEPS" ]; then
               npm install --no-save --legacy-peer-deps $PEER_DEPS
             fi
