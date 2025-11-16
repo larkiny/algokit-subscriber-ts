@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       tags:
-        description: 'Space/comma separated tags to rebuild (e.g., v1.0.0 v1.1.0)'
+        description: "Space/comma separated tags to rebuild (e.g., v1.0.0 v1.1.0)"
         required: true
       node-version:
-        description: 'Node version for builds'
+        description: "Node version for builds"
         required: false
-        default: '20'
+        default: "20"
 
 jobs:
   backfill:
@@ -66,8 +66,11 @@ jobs:
               continue
             fi
             git checkout --force "$tag"
-            npm ci --ignore-scripts
-            npm install --no-save typedoc@^0.28.14 typedoc-plugin-markdown@^4.9.0 typedoc-plugin-frontmatter@^1.3.0
+            npm ci --ignore-scripts --legacy-peer-deps
+            npm install --no-save --legacy-peer-deps \
+              typedoc@^0.28.14 \
+              typedoc-plugin-markdown@^4.9.0 \
+              typedoc-plugin-frontmatter@^1.3.0
             npx algo-docs init --force
             npx algo-docs build
             npx algo-docs manifest
