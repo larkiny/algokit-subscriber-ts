@@ -1,3 +1,7 @@
+---
+title: ErrorListener
+---
+
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***

@@ -1,3 +1,7 @@
+---
+title: TypedAsyncEventListener
+---
+
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
