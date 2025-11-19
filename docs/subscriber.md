@@ -4,7 +4,7 @@
 
 ## Creating a subscriber
 
-To create an `AlgorandSubscriber` you can use the constructor:
+To create an `AlgorandSubscriber` you can use this cool-ass constructor:
 
 ```typescript
   /**
