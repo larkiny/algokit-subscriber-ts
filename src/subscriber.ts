@@ -15,7 +15,7 @@ import Algodv2 = algosdk.Algodv2
 import Indexer = algosdk.Indexer
 
 /**
- * Handles the logic for subscribing to the Algorand blockchain and emitting events.
+ * Handles the logic for subscribing to the Algorand and emitting events.
  */
 export class AlgorandSubscriber {
   private algod: Algodv2
