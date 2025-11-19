@@ -1,15 +1,15 @@
 {
   "version": "1.0",
-  "generated": "2025-11-16T09:06:14.381Z",
+  "generated": "2025-11-19T08:54:48.704Z",
   "generator": {
     "tool": "typedoc",
     "version": "0.28.14",
-    "toolsVersion": "1.0.8"
+    "toolsVersion": "1.1.10"
   },
   "metadata": {
     "repository": "https://github.com/larkiny/algokit-subscriber-ts",
     "branch": "main",
-    "commit": "0b2e612f654ed37b34bbadec40ba12a33dfb78d5",
+    "commit": "11227b955ae5d7d84646fd16814af23f02b1e81c",
     "name": "@algorandfoundation/algokit-subscriber",
     "title": "@algorandfoundation/algokit-subscriber",
     "description": ""
