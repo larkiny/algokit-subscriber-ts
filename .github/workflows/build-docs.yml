@@ -97,11 +97,15 @@ jobs:
         if: success()
         id: notify-devportal
         run: |
+          set -euo pipefail
+
           echo "📤 Notifying DevPortal of documentation update..."
 
           REPO_OWNER="${{ github.repository_owner }}"
           REPO_NAME="${{ github.event.repository.name }}"
           REPO_FULL="${{ github.repository }}"
+          DISPATCH_REPO="${{ vars.DEVPORTAL_REPO || 'algorandfoundation/devportal' }}"
+          DISPATCH_BRANCH="${{ vars.DOCS_BRANCH || 'docs-dist' }}"
 
           if [[ "${{ github.event_name }}" == "release" ]]; then
             VERSION="v${{ github.event.release.tag_name }}"
@@ -113,10 +117,39 @@ jobs:
             TRIGGER_EVENT="manual"
             TRIGGER_REASON="${{ github.event.inputs.reason || 'Manual documentation update' }}"
           fi
+          COMMIT_MESSAGE="${{ github.event.head_commit.message || github.event.release.name || github.event.inputs.reason || 'Manual documentation update' }}"
+          COMMIT_URL="${{ github.event.head_commit.url || github.event.release.html_url || github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          TIMESTAMP="${{ github.event.head_commit.timestamp || github.event.release.created_at || github.event.repository.updated_at }}"
 
           echo "Repository: $REPO_FULL"
           echo "Version: $VERSION"
           echo "Trigger: $TRIGGER_EVENT"
+          echo "Dispatch repository: $DISPATCH_REPO"
+          echo "Docs branch: $DISPATCH_BRANCH"
+          if [[ -z "${DEVPORTAL_DISPATCH_TOKEN:-}" ]]; then
+            echo "⚠️ DEVPORTAL_DISPATCH_TOKEN is empty or missing"
+          else
+            echo "DEVPORTAL_DISPATCH_TOKEN detected (masked)"
+          fi
+
+          PAYLOAD_FILE="/tmp/devportal-dispatch-payload.json"
+          jq -n \
+            --arg source_repo "$REPO_FULL" \
+            --arg source_owner "$REPO_OWNER" \
+            --arg source_name "$REPO_NAME" \
+            --arg ref "${{ github.sha }}" \
+            --arg branch "$DISPATCH_BRANCH" \
+            --arg version "$VERSION" \
+            --arg trigger_event "$TRIGGER_EVENT" \
+            --arg trigger_reason "$TRIGGER_REASON" \
+            --arg commit_message "$COMMIT_MESSAGE" \
+            --arg commit_url "$COMMIT_URL" \
+            --arg timestamp "$TIMESTAMP" \
+            '{event_type:"docs_updated", client_payload:{source_repo:$source_repo, source_owner:$source_owner, source_name:$source_name, ref:$ref, branch:$branch, version:$version, trigger_event:$trigger_event, trigger_reason:$trigger_reason, commit_message:$commit_message, commit_url:$commit_url, timestamp:$timestamp}}' \
+            > "$PAYLOAD_FILE"
+
+          echo "Dispatch payload:"
+          cat "$PAYLOAD_FILE"
 
           HTTP_STATUS=$(curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
@@ -125,23 +158,8 @@ jobs:
             -w "%{http_code}" \
             -o /tmp/response.json \
             -s \
-            https://api.github.com/repos/${{ vars.DEVPORTAL_REPO || 'algorandfoundation/devportal' }}/dispatches \
-            -d '{
-              "event_type": "docs_updated",
-              "client_payload": {
-                "source_repo": "'$REPO_FULL'",
-                "source_owner": "'$REPO_OWNER'",
-                "source_name": "'$REPO_NAME'",
-                "ref": "${{ github.sha }}",
-                "branch": "${{ vars.DOCS_BRANCH || 'docs-dist' }}",
-                "version": "'$VERSION'",
-                "trigger_event": "'$TRIGGER_EVENT'",
-                "trigger_reason": "'$TRIGGER_REASON'",
-                "commit_message": "${{ github.event.head_commit.message || github.event.release.name || github.event.inputs.reason }}",
-                "commit_url": "${{ github.event.head_commit.url || github.event.release.html_url || github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}",
-                "timestamp": "${{ github.event.head_commit.timestamp || github.event.release.created_at || github.event.repository.updated_at }}"
-              }
-            }')
+            https://api.github.com/repos/$DISPATCH_REPO/dispatches \
+            -d @"$PAYLOAD_FILE")
 
           if [ "$HTTP_STATUS" -eq 204 ]; then
             echo "✅ DevPortal notification sent successfully"
