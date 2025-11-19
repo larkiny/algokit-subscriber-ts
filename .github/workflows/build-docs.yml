@@ -3,9 +3,6 @@ name: Build Documentation
 on:
   workflow_dispatch:
     inputs:
-      version_tag:
-        description: "Optional version tag (e.g., v1.2.3)"
-        required: false
       reason:
         description: "Reason for manual update"
         required: false
@@ -111,10 +108,6 @@ jobs:
             VERSION="${VERSION#vv}"
             TRIGGER_EVENT="release"
             TRIGGER_REASON="Release ${{ github.event.release.tag_name }}: ${{ github.event.release.name }}"
-          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && [[ -n "${{ github.event.inputs.version_tag }}" ]]; then
-            VERSION="${{ github.event.inputs.version_tag }}"
-            TRIGGER_EVENT="manual"
-            TRIGGER_REASON="${{ github.event.inputs.reason || 'Manual documentation update' }}"
           else
             VERSION="latest"
             TRIGGER_EVENT="manual"
