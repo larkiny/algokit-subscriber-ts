@@ -117,7 +117,6 @@ jobs:
             TRIGGER_EVENT="manual"
             TRIGGER_REASON="${{ github.event.inputs.reason || 'Manual documentation update' }}"
           fi
-          COMMIT_MESSAGE="${{ github.event.head_commit.message || github.event.release.name || github.event.inputs.reason || 'Manual documentation update' }}"
           COMMIT_URL="${{ github.event.head_commit.url || github.event.release.html_url || github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
           TIMESTAMP="${{ github.event.head_commit.timestamp || github.event.release.created_at || github.event.repository.updated_at }}"
 
@@ -142,10 +141,9 @@ jobs:
             --arg version "$VERSION" \
             --arg trigger_event "$TRIGGER_EVENT" \
             --arg trigger_reason "$TRIGGER_REASON" \
-            --arg commit_message "$COMMIT_MESSAGE" \
             --arg commit_url "$COMMIT_URL" \
             --arg timestamp "$TIMESTAMP" \
-            '{event_type:"docs_updated", client_payload:{source_repo:$source_repo, source_owner:$source_owner, source_name:$source_name, ref:$ref, branch:$branch, version:$version, trigger_event:$trigger_event, trigger_reason:$trigger_reason, commit_message:$commit_message, commit_url:$commit_url, timestamp:$timestamp}}' \
+            '{event_type:"docs_updated", client_payload:{source_repo:$source_repo, source_owner:$source_owner, source_name:$source_name, ref:$ref, branch:$branch, version:$version, trigger_event:$trigger_event, trigger_reason:$trigger_reason, commit_url:$commit_url, timestamp:$timestamp}}' \
             > "$PAYLOAD_FILE"
 
           echo "Dispatch payload:"
