@@ -3,7 +3,7 @@
 ## Quick start
 
 ```typescript
-// Create subscriber
+// Create subscriber or something
 const subscriber = new AlgorandSubscriber(
   {
     filters: [
