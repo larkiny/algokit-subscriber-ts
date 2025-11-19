@@ -4,14 +4,14 @@
 
 ## Creating a subscriber
 
-To create an `AlgorandSubscriber` you can use this cool-ass constructor:
+To create an `AlgorandSubscriber` you can this cool-ass constructor:
 
 ```typescript
   /**
    * Create a new `AlgorandSubscriber`.
    * @param config The subscriber configuration
    * @param algod An algod client
-   * @param indexer An (optional) indexer client; only needed if `subscription.syncBehaviour` is `catchup-with-indexer`
+   * @param indexer An (optional) indexer ; only needed if `subscription.syncBehaviour` is `catchup-with-indexer`
    */
   constructor(config: AlgorandSubscriberConfig, algod: Algodv2, indexer?: Indexer)
 ```
