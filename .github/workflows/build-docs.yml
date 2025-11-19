@@ -2,6 +2,13 @@ name: Build Documentation
 
 on:
   workflow_dispatch:
+    inputs:
+      version_tag:
+        description: "Optional version tag (e.g., v1.2.3)"
+        required: false
+      reason:
+        description: "Reason for manual update"
+        required: false
   release:
     types: [published]
 
@@ -88,3 +95,118 @@ jobs:
           publish_dir: docs-publish
           publish_branch: ${{ env.DOCS_BRANCH }}
           keep_files: false
+
+      - name: Notify DevPortal of Documentation Update
+        if: success()
+        id: notify-devportal
+        run: |
+          echo "📤 Notifying DevPortal of documentation update..."
+
+          REPO_OWNER="${{ github.repository_owner }}"
+          REPO_NAME="${{ github.event.repository.name }}"
+          REPO_FULL="${{ github.repository }}"
+
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            VERSION="v${{ github.event.release.tag_name }}"
+            VERSION="${VERSION#vv}"
+            TRIGGER_EVENT="release"
+            TRIGGER_REASON="Release ${{ github.event.release.tag_name }}: ${{ github.event.release.name }}"
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && [[ -n "${{ github.event.inputs.version_tag }}" ]]; then
+            VERSION="${{ github.event.inputs.version_tag }}"
+            TRIGGER_EVENT="manual"
+            TRIGGER_REASON="${{ github.event.inputs.reason || 'Manual documentation update' }}"
+          else
+            VERSION="latest"
+            TRIGGER_EVENT="manual"
+            TRIGGER_REASON="${{ github.event.inputs.reason || 'Manual documentation update' }}"
+          fi
+
+          echo "Repository: $REPO_FULL"
+          echo "Version: $VERSION"
+          echo "Trigger: $TRIGGER_EVENT"
+
+          HTTP_STATUS=$(curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.DEVPORTAL_DISPATCH_TOKEN }}" \
+            -H "User-Agent: $REPO_NAME-docs" \
+            -w "%{http_code}" \
+            -o /tmp/response.json \
+            -s \
+            https://api.github.com/repos/${{ vars.DEVPORTAL_REPO || 'algorandfoundation/devportal' }}/dispatches \
+            -d '{
+              "event_type": "docs_updated",
+              "client_payload": {
+                "source_repo": "'$REPO_FULL'",
+                "source_owner": "'$REPO_OWNER'",
+                "source_name": "'$REPO_NAME'",
+                "ref": "${{ github.sha }}",
+                "branch": "${{ vars.DOCS_BRANCH || 'docs-dist' }}",
+                "version": "'$VERSION'",
+                "trigger_event": "'$TRIGGER_EVENT'",
+                "trigger_reason": "'$TRIGGER_REASON'",
+                "commit_message": "${{ github.event.head_commit.message || github.event.release.name || github.event.inputs.reason }}",
+                "commit_url": "${{ github.event.head_commit.url || github.event.release.html_url || github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}",
+                "timestamp": "${{ github.event.head_commit.timestamp || github.event.release.created_at || github.event.repository.updated_at }}"
+              }
+            }')
+
+          if [ "$HTTP_STATUS" -eq 204 ]; then
+            echo "✅ DevPortal notification sent successfully"
+            echo "devportal_notified=true" >> "$GITHUB_OUTPUT"
+          elif [ "$HTTP_STATUS" -eq 404 ]; then
+            echo "❌ DevPortal repository not found or token lacks access"
+            echo "devportal_notified=false" >> "$GITHUB_OUTPUT"
+            exit 1
+          elif [ "$HTTP_STATUS" -eq 401 ] || [ "$HTTP_STATUS" -eq 403 ]; then
+            echo "❌ Authentication failed. Check DEVPORTAL_DISPATCH_TOKEN"
+            echo "devportal_notified=false" >> "$GITHUB_OUTPUT"
+            exit 1
+          else
+            echo "⚠️ Unexpected response: HTTP $HTTP_STATUS"
+            if [ -f /tmp/response.json ]; then
+              echo "Response body:"
+              cat /tmp/response.json
+            fi
+            echo "devportal_notified=false" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+        env:
+          DEVPORTAL_DISPATCH_TOKEN: ${{ secrets.DEVPORTAL_DISPATCH_TOKEN }}
+        continue-on-error: true
+
+      - name: Handle DevPortal Notification Status
+        if: always()
+        run: |
+          if [ "${{ steps.notify-devportal.outputs.devportal_notified }}" = "true" ]; then
+            echo "📚 Documentation has been published and DevPortal has been notified"
+            echo "The DevPortal will create a PR to import the documentation"
+          elif [ -z "${{ secrets.DEVPORTAL_DISPATCH_TOKEN }}" ]; then
+            echo "⚠️ DEVPORTAL_DISPATCH_TOKEN not configured"
+            echo "Documentation has been published to docs-dist branch but DevPortal was not notified"
+            echo "Add DEVPORTAL_DISPATCH_TOKEN to repository secrets to enable automatic imports"
+          else
+            echo "⚠️ DevPortal notification failed but documentation was still published to docs-dist branch"
+            echo "You may need to trigger the import manually"
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Documentation Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Repository**: \`${{ github.repository }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version target**: \`${{ steps.docs_target.outputs.target || 'latest' }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Documentation Branch**: \`${{ env.DOCS_BRANCH }}\`" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "- **Build Status**: ✅ Success" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **Build Status**: ❌ Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ steps.notify-devportal.outputs.devportal_notified }}" = "true" ]; then
+            echo "- **DevPortal Notification**: ✅ Sent" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "📝 The DevPortal was notified and will import this documentation." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **DevPortal Notification**: ⚠️ Not sent" >> $GITHUB_STEP_SUMMARY
+          fi
