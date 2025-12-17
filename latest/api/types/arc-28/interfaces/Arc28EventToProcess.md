@@ -1,10 +1,8 @@
----
-title: Arc28EventToProcess
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/arc-28](../README.md) / Arc28EventToProcess
 
 # Interface: Arc28EventToProcess
 
@@ -12,7 +10,11 @@ Defined in: [src/types/arc-28.ts:25](https://github.com/larkiny/algokit-subscrib
 
 An ARC-28 event to be processed
 
-## Extended by
+## Hierarchy
+
+[View Summary](../../../hierarchy.md)
+
+### Extended by
 
 - [`EmittedArc28Event`](EmittedArc28Event.md)
 

@@ -1,10 +1,8 @@
----
-title: BalanceChange
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / BalanceChange
 
 # Interface: BalanceChange
 

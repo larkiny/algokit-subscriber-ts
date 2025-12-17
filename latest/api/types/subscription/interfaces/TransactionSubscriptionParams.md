@@ -1,10 +1,8 @@
----
-title: TransactionSubscriptionParams
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / TransactionSubscriptionParams
 
 # Interface: TransactionSubscriptionParams
 
@@ -12,7 +10,11 @@ Defined in: [src/types/subscription.ts:366](https://github.com/larkiny/algokit-s
 
 Parameters to control a single subscription pull/poll.
 
-## Extends
+## Hierarchy
+
+[View Summary](../../../hierarchy.md)
+
+### Extends
 
 - [`CoreTransactionSubscriptionParams`](CoreTransactionSubscriptionParams.md)
 

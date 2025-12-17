@@ -1,10 +1,8 @@
----
-title: BeforePollMetadata
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / BeforePollMetadata
 
 # Interface: BeforePollMetadata
 

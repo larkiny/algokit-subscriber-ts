@@ -1,10 +1,8 @@
----
-title: TransactionFilter
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / TransactionFilter
 
 # Interface: TransactionFilter
 

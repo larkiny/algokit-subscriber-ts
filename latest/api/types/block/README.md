@@ -1,12 +1,8 @@
----
-title: Overview
-sidebar:
-  order: 0
----
-
 [**@algorandfoundation/algokit-subscriber**](../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../modules.md) / types/block
 
 # types/block
 

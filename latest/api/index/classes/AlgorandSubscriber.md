@@ -1,10 +1,8 @@
----
-title: AlgorandSubscriber
----
-
 [**@algorandfoundation/algokit-subscriber**](../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../modules.md) / [index](../README.md) / AlgorandSubscriber
 
 # Class: AlgorandSubscriber
 

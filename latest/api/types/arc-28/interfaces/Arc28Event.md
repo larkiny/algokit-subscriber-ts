@@ -1,10 +1,8 @@
----
-title: Arc28Event
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/arc-28](../README.md) / Arc28Event
 
 # Interface: Arc28Event
 

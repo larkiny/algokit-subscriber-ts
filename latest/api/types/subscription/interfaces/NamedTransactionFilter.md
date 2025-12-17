@@ -1,10 +1,8 @@
----
-title: NamedTransactionFilter
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / NamedTransactionFilter
 
 # Interface: NamedTransactionFilter
 
@@ -12,7 +10,11 @@ Defined in: [src/types/subscription.ts:302](https://github.com/larkiny/algokit-s
 
 Specify a named filter to apply to find transactions of interest.
 
-## Extended by
+## Hierarchy
+
+[View Summary](../../../hierarchy.md)
+
+### Extended by
 
 - [`SubscriberConfigFilter`](SubscriberConfigFilter.md)
 

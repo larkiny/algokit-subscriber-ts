@@ -1,10 +1,8 @@
----
-title: SubscribedTransaction
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / SubscribedTransaction
 
 # Class: SubscribedTransaction
 
@@ -18,7 +16,11 @@ Substantively, based on the Indexer  [`TransactionResult` model](https://dev.alg
 * Add emitted ARC-28 events via `arc28Events`
 * Balance changes in algo or assets
 
-## Extends
+## Hierarchy
+
+[View Summary](../../../hierarchy.md)
+
+### Extends
 
 - `Transaction`
 

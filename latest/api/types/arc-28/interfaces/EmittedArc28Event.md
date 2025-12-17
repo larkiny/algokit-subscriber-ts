@@ -1,10 +1,8 @@
----
-title: EmittedArc28Event
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/arc-28](../README.md) / EmittedArc28Event
 
 # Interface: EmittedArc28Event
 
@@ -12,7 +10,11 @@ Defined in: [src/types/arc-28.ts:39](https://github.com/larkiny/algokit-subscrib
 
 An emitted ARC-28 event extracted from an app call log.
 
-## Extends
+## Hierarchy
+
+[View Summary](../../../hierarchy.md)
+
+### Extends
 
 - [`Arc28EventToProcess`](Arc28EventToProcess.md)
 

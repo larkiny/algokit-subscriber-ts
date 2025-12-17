@@ -1,10 +1,8 @@
----
-title: AsyncEventEmitter
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/async-event-emitter](../README.md) / AsyncEventEmitter
 
 # Class: AsyncEventEmitter
 

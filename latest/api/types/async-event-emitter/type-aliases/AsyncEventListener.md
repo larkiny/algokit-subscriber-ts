@@ -1,10 +1,8 @@
----
-title: AsyncEventListener
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/async-event-emitter](../README.md) / AsyncEventListener
 
 # Type Alias: AsyncEventListener()
 

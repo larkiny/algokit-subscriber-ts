@@ -1,10 +1,8 @@
----
-title: BlockUpgradeVote
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / BlockUpgradeVote
 
 # Interface: BlockUpgradeVote
 

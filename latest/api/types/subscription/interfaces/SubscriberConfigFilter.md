@@ -1,10 +1,8 @@
----
-title: SubscriberConfigFilter
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / SubscriberConfigFilter
 
 # Interface: SubscriberConfigFilter\<T\>
 
@@ -12,7 +10,11 @@ Defined in: [src/types/subscription.ts:404](https://github.com/larkiny/algokit-s
 
 A single event to subscribe to / emit.
 
-## Extends
+## Hierarchy
+
+[View Summary](../../../hierarchy.md)
+
+### Extends
 
 - [`NamedTransactionFilter`](NamedTransactionFilter.md)
 

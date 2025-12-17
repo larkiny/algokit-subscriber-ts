@@ -1,10 +1,8 @@
----
-title: AlgorandSubscriberConfig
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / AlgorandSubscriberConfig
 
 # Interface: AlgorandSubscriberConfig
 
@@ -12,7 +10,11 @@ Defined in: [src/types/subscription.ts:386](https://github.com/larkiny/algokit-s
 
 Configuration for an `AlgorandSubscriber`.
 
-## Extends
+## Hierarchy
+
+[View Summary](../../../hierarchy.md)
+
+### Extends
 
 - [`CoreTransactionSubscriptionParams`](CoreTransactionSubscriptionParams.md)
 

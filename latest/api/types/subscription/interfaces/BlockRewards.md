@@ -1,10 +1,8 @@
----
-title: BlockRewards
----
-
 [**@algorandfoundation/algokit-subscriber**](../../../README.md)
 
 ***
+
+[@algorandfoundation/algokit-subscriber](../../../modules.md) / [types/subscription](../README.md) / BlockRewards
 
 # Interface: BlockRewards
 
