@@ -2,10 +2,6 @@ name: Build Documentation
 
 on:
   workflow_dispatch:
-    inputs:
-      reason:
-        description: "Reason for manual update"
-        required: false
   release:
     types: [published]
 
