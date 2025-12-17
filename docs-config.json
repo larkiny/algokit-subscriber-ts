@@ -1,6 +1,7 @@
 {
   "$schema": "https://unpkg.com/@algorandfoundation/algo-docs-sync/schema/v1.json",
   "version": "1.0",
+  "generator": "typedoc",
   "guides": {
     "sourcePath": "docs/",
     "include": "**/*.md"
