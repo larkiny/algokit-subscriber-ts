@@ -1,6 +1,5 @@
 ---
 title: "@algorandfoundation/algokit-subscriber"
-generated: 2025-12-22T12:51:21.611Z
 ---
 
 [**@algorandfoundation/algokit-subscriber**](README.md)

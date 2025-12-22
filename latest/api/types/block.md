@@ -1,6 +1,5 @@
 ---
 title: types/block
-generated: 2025-12-22T12:51:21.632Z
 ---
 
 [**@algorandfoundation/algokit-subscriber**](../README.md)
