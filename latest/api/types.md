@@ -1,3 +1,8 @@
+---
+title: types
+generated: 2025-12-22T12:51:21.625Z
+---
+
 [**@algorandfoundation/algokit-subscriber**](README.md)
 
 ***

@@ -1,3 +1,8 @@
+---
+title: types/arc-28
+generated: 2025-12-22T12:51:21.627Z
+---
+
 [**@algorandfoundation/algokit-subscriber**](../README.md)
 
 ***

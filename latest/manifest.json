@@ -1,11 +1,11 @@
 {
-  "generated": "2025-12-21T12:33:55.903Z",
+  "generated": "2025-12-22T12:51:21.760Z",
   "generator": {
     "tool": "typedoc",
     "version": "0.28.14"
   },
   "metadata": {
     "repository": "larkiny/algokit-subscriber-ts",
-    "commit": "b5f692e6f636b36408c9e01c17e226f6c878337f"
+    "commit": "5785459287b7fa6c9c56b5cfd4f754391af1d5f6"
   }
 }
