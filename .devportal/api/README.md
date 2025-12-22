@@ -1,3 +1,12 @@
+---
+title: "@algorandfoundation/algokit-subscriber"
+generated: 2025-12-22T12:35:08.588Z
+---
+
+**@algorandfoundation/algokit-subscriber**
+
+***
+
 # Algorand transaction subscription / indexing
 
 This library a simple, but flexible / configurable Algorand transaction subscription / indexing mechanism. It allows you to quickly create Node.js or JavaScript services that follow or subscribe to the Algorand Blockchain.
