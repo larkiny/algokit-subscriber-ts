@@ -2,11 +2,11 @@
 
 This library a simple, but flexible / configurable Algorand transaction subscription / indexing mechanism. It allows you to quickly create Node.js or JavaScript services that follow or subscribe to the Algorand Blockchain.
 
-[Documentation](./docs/README.md)
+[Documentation](./docs/guides/README.md)
 
 ## Install
 
-Before installing, you'll need to decide on the version you want to target. Version 2 and 3 have largerly the same feature set, however v2 leverages algosdk@>=2.9.0<3.0, whereas v3 leverages algosdk@>=3.0.0. It is recommended that you aim to target the latest version, however in some circumstances that might not be possible.
+Before installing, you'll need to decide on which version you want to target. Version 2 and 3 have largerly the same feature set, however v2 leverages algosdk@>=2.9.0<3.0, whereas v3 leverages algosdk@>=3.0.0. It is recommended that you aim to target the latest version, however in some circumstances that might not be possible.
 
 Once you've decided on the target version, this library can be installed from NPM using your favourite npm client, e.g.:
 

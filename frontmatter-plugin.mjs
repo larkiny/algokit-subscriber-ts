@@ -7,7 +7,6 @@ export function load(app) {
       console.log('Reflection:', reflection)
       page.frontmatter = {
         title: reflection.name,
-        generated: new Date().toISOString(),
         ...page.frontmatter,
       }
     }
