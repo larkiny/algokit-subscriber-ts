@@ -1,6 +1,5 @@
 ---
 title: types/async-event-emitter
-generated: 2025-12-22T12:35:08.608Z
 ---
 
 [**@algorandfoundation/algokit-subscriber**](../README.md)
@@ -33,35 +32,9 @@ Simple asynchronous event emitter class.
 
 #### Properties
 
-##### off()
-
-> **off**: (`eventName`, `listener`) => [`AsyncEventEmitter`](#asynceventemitter)
-
-Defined in: [src/types/async-event-emitter.ts:82](https://github.com/larkiny/algokit-subscriber-ts/blob/main/src/types/async-event-emitter.ts#L82)
-
-Alias for `removeListener`.
-
-Removes an event listener from the given event.
-
-###### Parameters
-
-###### eventName
-
-The name of the event
-
-`string` | `symbol`
-
-###### listener
-
-[`AsyncEventListener`](#asynceventlistener)
-
-The listener to remove
-
-###### Returns
-
-[`AsyncEventEmitter`](#asynceventemitter)
-
-The `AsyncEventEmitter` so you can chain registrations
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="off"></a> `off` | (`eventName`, `listener`) => [`AsyncEventEmitter`](#asynceventemitter) | Alias for `removeListener`. | [src/types/async-event-emitter.ts:82](https://github.com/larkiny/algokit-subscriber-ts/blob/main/src/types/async-event-emitter.ts#L82) |
 
 #### Methods
 
@@ -76,17 +49,10 @@ in the order they were registered.
 
 ###### Parameters
 
-###### eventName
-
-The name of the event
-
-`string` | `symbol`
-
-###### event
-
-`unknown`
-
-The event payload
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `string` \| `symbol` | The name of the event |
+| `event` | `unknown` | The event payload |
 
 ###### Returns
 
@@ -102,17 +68,10 @@ Register an event listener for the given event.
 
 ###### Parameters
 
-###### eventName
-
-The name of the event
-
-`string` | `symbol`
-
-###### listener
-
-[`AsyncEventListener`](#asynceventlistener)
-
-The listener to trigger
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `string` \| `symbol` | The name of the event |
+| `listener` | [`AsyncEventListener`](#asynceventlistener) | The listener to trigger |
 
 ###### Returns
 
@@ -130,17 +89,10 @@ Register an event listener for the given event that is only fired once.
 
 ###### Parameters
 
-###### eventName
-
-The name of the event
-
-`string` | `symbol`
-
-###### listener
-
-[`AsyncEventListener`](#asynceventlistener)
-
-The listener to trigger
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `string` \| `symbol` | The name of the event |
+| `listener` | [`AsyncEventListener`](#asynceventlistener) | The listener to trigger |
 
 ###### Returns
 
@@ -158,17 +110,10 @@ Removes an event listener from the given event.
 
 ###### Parameters
 
-###### eventName
-
-The name of the event
-
-`string` | `symbol`
-
-###### listener
-
-[`AsyncEventListener`](#asynceventlistener)
-
-The listener to remove
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `string` \| `symbol` | The name of the event |
+| `listener` | [`AsyncEventListener`](#asynceventlistener) | The listener to remove |
 
 ###### Returns
 
@@ -188,13 +133,10 @@ An asynchronous event listener
 
 #### Parameters
 
-##### event
-
-`unknown`
-
-##### eventName
-
-`string` | `symbol`
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `unknown` |
+| `eventName` | `string` \| `symbol` |
 
 #### Returns
 

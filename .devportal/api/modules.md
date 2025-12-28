@@ -1,6 +1,5 @@
 ---
 title: "@algorandfoundation/algokit-subscriber"
-generated: 2025-12-22T12:35:08.591Z
 ---
 
 [**@algorandfoundation/algokit-subscriber**](README.md)
@@ -11,9 +10,12 @@ generated: 2025-12-22T12:35:08.591Z
 
 ## Modules
 
-- [index](index.md)
-- [types](types.md)
-- [types/arc-28](types/arc-28.md)
-- [types/async-event-emitter](types/async-event-emitter.md)
-- [types/block](types/block.md)
-- [types/subscription](types/subscription.md)
+| Module | Description |
+| ------ | ------ |
+| [subscriber](subscriber.md) | - |
+| [subscriptions](subscriptions.md) | - |
+| [types](types.md) | - |
+| [types/arc-28](types/arc-28.md) | - |
+| [types/async-event-emitter](types/async-event-emitter.md) | - |
+| [types/block](types/block.md) | - |
+| [types/subscription](types/subscription.md) | - |
