@@ -2,12 +2,6 @@
 title: types/async-event-emitter
 ---
 
-[**@algorandfoundation/algokit-subscriber**](../README.md)
-
-***
-
-[@algorandfoundation/algokit-subscriber](../modules.md) / types/async-event-emitter
-
 # types/async-event-emitter
 
 ## Classes

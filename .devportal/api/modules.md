@@ -2,10 +2,6 @@
 title: "@algorandfoundation/algokit-subscriber"
 ---
 
-[**@algorandfoundation/algokit-subscriber**](README.md)
-
-***
-
 # @algorandfoundation/algokit-subscriber
 
 ## Modules

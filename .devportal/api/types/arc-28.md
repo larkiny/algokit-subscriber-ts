@@ -2,12 +2,6 @@
 title: types/arc-28
 ---
 
-[**@algorandfoundation/algokit-subscriber**](../README.md)
-
-***
-
-[@algorandfoundation/algokit-subscriber](../modules.md) / types/arc-28
-
 # types/arc-28
 
 ## Interfaces
