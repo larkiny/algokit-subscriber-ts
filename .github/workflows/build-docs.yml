@@ -18,6 +18,6 @@ jobs:
         run: npm ci
 
       - name: Publish Docs for Dev Portal
-        uses: algorandfoundation/algokit-shared-config/.github/actions/devportal-publish-docs@feat/separate-typedoc-configs
+        uses: algorandfoundation/algokit-shared-config/.github/actions/devportal-publish-docs-py@feat/separate-typedoc-configs
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
